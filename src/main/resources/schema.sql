@@ -15,6 +15,6 @@ CREATE TABLE PRODUCTO (
 productoId INT NOT NULL AUTO_INCREMENT,
 descripcion VARCHAR(100),
 precio INT,
-cantidad INT,
+stock INT,
 PRIMARY KEY (productoId)
 );

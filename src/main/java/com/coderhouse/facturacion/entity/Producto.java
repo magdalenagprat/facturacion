@@ -22,11 +22,11 @@ public class Producto {
     public Producto() {
     }
 
-    public Producto(Integer productoId, String descripcion, Integer precio, Integer cantidad) {
+    public Producto(Integer productoId, String descripcion, Integer precio, Integer stock) {
         this.productoId = productoId;
         this.descripcion = descripcion;
         this.precio = precio;
-        this.cantidad = cantidad;
+        this.stock = stock;
     }
 
     public Integer getProductoId() {
@@ -53,11 +53,11 @@ public class Producto {
         this.precio = precio;
     }
 
-    public Integer getCantidad() {
-        return cantidad;
+    public Integer getStock() {
+        return stock;
     }
 
-    public void setCantidad(Integer cantidad) {
-        this.cantidad = cantidad;
+    public void setStock(Integer stock) {
+        this.stock = stock;
     }
 }

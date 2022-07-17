@@ -9,7 +9,7 @@ VALUES
 
 
 INSERT INTO PRODUCTO
-(productoId, descripcion, precio, cantidad)
+(productoId, descripcion, precio, stock)
 VALUES
 (1, 'Microondas', 15000, 10),
 (2, 'Refrigerador', 100000, 20),
