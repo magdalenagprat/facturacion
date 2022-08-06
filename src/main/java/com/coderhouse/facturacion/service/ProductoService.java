@@ -38,4 +38,16 @@ public class ProductoService {
             throw new Exception("El producto no existe");
         }
     }
+
+    public void eliminar(Producto producto) throws Exception {
+        if (buscarPorId(producto.getProductoId()) != null) {
+            productoRepository.delete(producto);
+        } else {
+            throw new Exception("El producto no existe");
+        }
+    }
+
+    public void eliminarPorId(Integer productoId) {
+        productoRepository.deleteById(productoId);
+    }
 }

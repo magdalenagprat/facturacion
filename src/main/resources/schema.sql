@@ -1,3 +1,31 @@
+
+DROP TABLE COMPROBANTE IF EXISTS;
+
+CREATE TABLE COMPROBANTE (
+comprobanteId INT NOT NULL AUTO_INCREMENT,
+clienteId INT NOT NULL,
+total INT,
+fecha DATE,
+CONSTRAINT FK_cliente FOREIGN KEY (clienteid)
+REFERENCES cliente(clienteId)
+);
+
+
+DROP TABLE VENTA IF EXISTS;
+
+CREATE TABLE VENTA (
+ventaId INT NOT NULL AUTO_INCREMENT,
+comprobanteId INT NOT NULL,
+productoId INT NOT NULL,
+cantidad INT,
+total INT,
+CONSTRAINT FK_comprobante FOREIGN KEY (comprobanteId)
+REFERENCES comprobante(comprobanteId),
+CONSTRAINT FK_producto FOREIGN KEY (productoId)
+REFERENCES producto(productoId)
+);
+
+
 DROP TABLE CLIENTE IF EXISTS;
 
 CREATE TABLE CLIENTE (
@@ -18,3 +46,5 @@ precio INT,
 stock INT,
 PRIMARY KEY (productoId)
 );
+
+

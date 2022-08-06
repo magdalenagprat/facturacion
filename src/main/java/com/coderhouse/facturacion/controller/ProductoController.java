@@ -13,7 +13,7 @@ public class ProductoController {
     @Autowired
     private ProductoService productoService;
 
-    @GetMapping("/all")
+    @GetMapping()
     public List<Producto> buscarTodos() {
         return productoService.buscarTodos();
     }
@@ -31,6 +31,16 @@ public class ProductoController {
     @PostMapping("/crear")
     public Producto crear(@RequestBody Producto producto) throws Exception {
         return productoService.crear(producto);
+    }
+
+    @PostMapping("/eliminar")
+    public void eliminar(@RequestBody Producto producto) throws Exception {
+        productoService.crear(producto);
+    }
+
+    @GetMapping("/eliminar/{productoId}")
+    public void eliminarPorId(@PathVariable Integer productoId) {
+        productoService.eliminarPorId(productoId);
     }
 
 }

@@ -1,7 +1,7 @@
 package com.coderhouse.facturacion.entity;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "COMPROBANTE")
@@ -11,22 +11,23 @@ public class Comprobante {
     @Id
     private Integer comprobanteId;
 
-    @Column(name = "CLIENTEID")
-    private Integer clienteId;
-
     @Column(name = "TOTAL")
     private Integer total;
     @Column(name = "FECHA")
-    private Date fecha;
+    private LocalDate fecha;
+
+    @ManyToOne
+    @JoinColumn(name="CLIENTEID")
+    private Cliente clienteId;
 
     public Comprobante() {
     }
 
-    public Comprobante(Integer comprobanteId, Integer clienteId, Integer total, Date fecha) {
+    public Comprobante(Integer comprobanteId, Integer total, LocalDate fecha, Cliente clienteId) {
         this.comprobanteId = comprobanteId;
-        this.clienteId = clienteId;
         this.total = total;
         this.fecha = fecha;
+        this.clienteId = clienteId;
     }
 
     public Integer getComprobanteId() {
@@ -37,14 +38,6 @@ public class Comprobante {
         this.comprobanteId = comprobanteId;
     }
 
-    public Integer getClienteId() {
-        return clienteId;
-    }
-
-    public void setClienteId(Integer clienteId) {
-        this.clienteId = clienteId;
-    }
-
     public Integer getTotal() {
         return total;
     }
@@ -53,11 +46,19 @@ public class Comprobante {
         this.total = total;
     }
 
-    public Date getFecha() {
+    public LocalDate getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
+    }
+
+    public Cliente getClienteId() {
+        return clienteId;
+    }
+
+    public void setClienteId(Cliente clienteId) {
+        this.clienteId = clienteId;
     }
 }

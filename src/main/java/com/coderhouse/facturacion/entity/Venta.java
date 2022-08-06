@@ -10,27 +10,28 @@ public class Venta {
     @Id
     private Integer ventaId;
 
-    @Column(name = "COMPROBANTEID")
-    private Integer comprobanteId;
-
-    @Column(name = "PRODUCTOID")
-    private String productoId;
-
     @Column(name = "CANTIDAD")
     private Integer cantidad;
 
     @Column(name = "TOTAL")
     private Integer total;
 
+    @ManyToOne
+    @JoinColumn(name="COMPROBANTEID")
+    private Comprobante comprobante;
+
+    @Column(name = "PRODUCTOID")
+    private Integer producto;
+
     public Venta() {
     }
 
-    public Venta(Integer ventaId, Integer comprobanteId, String productoId, Integer cantidad, Integer total) {
+    public Venta(Integer ventaId, Integer cantidad, Integer total, Comprobante comprobante, Integer producto) {
         this.ventaId = ventaId;
-        this.comprobanteId = comprobanteId;
-        this.productoId = productoId;
         this.cantidad = cantidad;
         this.total = total;
+        this.comprobante = comprobante;
+        this.producto = producto;
     }
 
     public Integer getVentaId() {
@@ -39,22 +40,6 @@ public class Venta {
 
     public void setVentaId(Integer ventaId) {
         this.ventaId = ventaId;
-    }
-
-    public Integer getComprobanteId() {
-        return comprobanteId;
-    }
-
-    public void setComprobanteId(Integer comprobanteId) {
-        this.comprobanteId = comprobanteId;
-    }
-
-    public String getProductoId() {
-        return productoId;
-    }
-
-    public void setProductoId(String productoId) {
-        this.productoId = productoId;
     }
 
     public Integer getCantidad() {
@@ -71,6 +56,22 @@ public class Venta {
 
     public void setTotal(Integer total) {
         this.total = total;
+    }
+
+    public Comprobante getComprobante() {
+        return comprobante;
+    }
+
+    public void setComprobante(Comprobante comprobante) {
+        this.comprobante = comprobante;
+    }
+
+    public Integer getProducto() {
+        return producto;
+    }
+
+    public void setProducto(Integer producto) {
+        this.producto = producto;
     }
 }
 

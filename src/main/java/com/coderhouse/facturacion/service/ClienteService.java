@@ -38,4 +38,16 @@ public class ClienteService {
             throw new Exception("El cliente no existe");
         }
     }
+
+    public void eliminar(Cliente cliente) throws Exception {
+        if (buscarPorId(cliente.getClienteId()) != null) {
+            clienteRepository.delete(cliente);
+        } else {
+            throw new Exception("El cliente no existe");
+        }
+    }
+
+    public void eliminarPorId(Integer clienteId) {
+        clienteRepository.deleteById(clienteId);
+    }
 }

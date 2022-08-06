@@ -14,7 +14,7 @@ public class ClienteController {
     @Autowired
     private ClienteService clienteService;
 
-    @GetMapping("/all")
+    @GetMapping()
     public List<Cliente> buscarTodos() {
         return clienteService.buscarTodos();
     }
@@ -34,4 +34,13 @@ public class ClienteController {
         return clienteService.crear(cliente);
     }
 
+    @PostMapping("/eliminar")
+    public void eliminar(@RequestBody Cliente cliente) throws Exception {
+        clienteService.eliminar(cliente);
+    }
+
+    @GetMapping("/eliminar/{clienteId}")
+    public void eliminarPorId(@PathVariable Integer clienteId) {
+        clienteService.eliminarPorId(clienteId);
+    }
 }
